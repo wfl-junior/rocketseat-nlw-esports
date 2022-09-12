@@ -1,0 +1,31 @@
+import express from "express";
+
+const PORT = 3333;
+const app = express();
+
+app.get("/ads", (_request, response) => {
+  return response.json([
+    {
+      id: 1,
+      name: "Anúncio 1",
+    },
+    {
+      id: 2,
+      name: "Anúncio 2",
+    },
+    {
+      id: 3,
+      name: "Anúncio 3",
+    },
+    {
+      id: 4,
+      name: "Anúncio 4",
+    },
+    {
+      id: 5,
+      name: "Anúncio 5",
+    },
+  ]);
+});
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
