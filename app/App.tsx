@@ -1,32 +1,35 @@
+import {
+  Inter_400Regular,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_900Black,
+  useFonts,
+} from "@expo-google-fonts/inter";
 import { Fragment } from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar } from "react-native";
+import { Background } from "./src/components/Background";
+import { Loading } from "./src/components/Loading";
+import { Home } from "./src/screens/Home";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#101215",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 36,
-  },
-});
+const App: React.FC = () => {
+  const [isFontReady] = useFonts({
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_900Black,
+  });
 
-const App: React.FC = () => (
-  <Fragment>
-    <StatusBar
-      barStyle="light-content"
-      backgroundColor="transparent"
-      translucent
-    />
+  return (
+    <Fragment>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
 
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello World</Text>
-    </View>
-  </Fragment>
-);
+      <Background>{isFontReady ? <Home /> : <Loading />}</Background>
+    </Fragment>
+  );
+};
 
 export default App;
