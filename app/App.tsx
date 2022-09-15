@@ -9,7 +9,7 @@ import { Fragment } from "react";
 import { StatusBar } from "react-native";
 import { Background } from "./src/components/Background";
 import { Loading } from "./src/components/Loading";
-import { Home } from "./src/screens/Home";
+import { Routes } from "./src/routes";
 
 const App: React.FC = () => {
   const [isFontReady] = useFonts({
@@ -27,7 +27,7 @@ const App: React.FC = () => {
         translucent
       />
 
-      <Background>{isFontReady ? <Home /> : <Loading />}</Background>
+      <Background>{isFontReady ? <Routes /> : <Loading />}</Background>
     </Fragment>
   );
 };

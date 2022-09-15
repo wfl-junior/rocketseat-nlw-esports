@@ -28,7 +28,10 @@ app.get("/games", async (_request, response, next) => {
       },
     });
 
-    return response.json(games);
+    return response.json({
+      ok: true,
+      games,
+    });
   } catch (error) {
     next(error);
   }

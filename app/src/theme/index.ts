@@ -35,4 +35,4 @@ export const THEME = {
     md: 16,
     lg: 24,
   },
-};
+} as const;

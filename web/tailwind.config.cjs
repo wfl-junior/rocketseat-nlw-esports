@@ -6,6 +6,9 @@ module.exports = {
       sans: ["Inter", "sans-serif"],
     },
     extend: {
+      colors: {
+        shape: "#2A2634",
+      },
       backgroundImage: {
         galaxy: "url(/background-galaxy.png)",
         "nlw-gradient":
