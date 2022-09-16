@@ -26,7 +26,9 @@ export const AdCard: React.FC<AdCardProps> = ({
 
     <AdCardInfo
       label="Disponibilidade"
-      value={`${ad.weekDays.length} dias \u2022 ${ad.startHour} - ${ad.endHour}`}
+      value={`${ad.weekDays.length} dia${
+        ad.weekDays.length !== 1 ? "s" : ""
+      } \u2022 ${ad.startHour} - ${ad.endHour}`}
     />
 
     <AdCardInfo

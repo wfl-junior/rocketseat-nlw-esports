@@ -9,7 +9,10 @@ export const GameBanner: React.FC<GameBannerProps> = ({
   bannerUrl,
   adsCount,
 }) => (
-  <a href="#" className="relative overflow-hidden rounded-lg">
+  <a
+    href="#"
+    className="relative overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105"
+  >
     <img src={bannerUrl} alt="" />
 
     <div className="bg-game-gradient absolute inset-x-0 bottom-0 w-full px-4 pt-16 pb-4">

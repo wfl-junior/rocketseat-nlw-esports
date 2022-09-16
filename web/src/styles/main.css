@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  width: 0;
+}
