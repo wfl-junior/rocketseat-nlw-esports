@@ -85,7 +85,8 @@ app.post("/games/:id/ads", async (request, response, next) => {
 
     const newAdData = await createAdValidationSchema.validate(request.body, {
       abortEarly: false,
-      strict: true,
+      // strict: true,
+      stripUnknown: true,
     });
 
     const ad = await prisma.ad.create({
@@ -103,6 +104,8 @@ app.post("/games/:id/ads", async (request, response, next) => {
       ad: {
         ...ad,
         weekDays: newAdData.weekDays,
+        startHour: newAdData.startHour,
+        endHour: newAdData.endHour,
       },
     });
   } catch (error) {
@@ -155,7 +158,7 @@ app.get("/ads/:id/discord", async (request, response, next) => {
 // global error handler
 app.use(
   (
-    error: any,
+    error: unknown,
     _request: express.Request,
     response: express.Response,
     _next: express.NextFunction,
