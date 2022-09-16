@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
 import logo from "./assets/logo.svg";
 import { CreateAdBanner } from "./components/CreateAdBanner";
 import { GameBanner } from "./components/GameBanner";
-import { GameDTO } from "./DTOs/GameDTO";
-import { api } from "./services/api";
+import { useGamesContext } from "./contexts/GamesContext";
 
 export const App: React.FC = () => {
-  const [games, setGames] = useState<GameDTO[]>([]);
-
-  useEffect(() => {
-    api
-      .get<{ games: GameDTO[] }>("/games")
-      .then(response => setGames(response.data.games))
-      .catch(console.log);
-  }, []);
+  const { games } = useGamesContext();
 
   return (
     <div className="mx-auto my-20 flex max-w-[1344px] flex-col items-center">

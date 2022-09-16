@@ -1,12 +1,20 @@
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../../assets/logo.png";
 import { AdCard } from "../../components/AdCard";
 import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
+import { LetsPlayModal } from "../../components/LetsPlayModal";
 import { AdDTO } from "../../DTOs/AdDTO";
 import { GameDTO } from "../../DTOs/GameDTO";
 import { api } from "../../services/api";
@@ -19,6 +27,8 @@ export interface GameRouteParams {
 
 export const Game: React.FC = () => {
   const [ads, setAds] = useState<AdDTO[]>([]);
+  const [selectedDuoDiscord, setSelectedDuoDiscord] = useState("");
+  const [isFetchingDiscord, setIsFetchingDiscord] = useState(false);
   const { goBack } = useNavigation();
   const { params } = useRoute();
   const { game } = params as GameRouteParams;
@@ -39,6 +49,27 @@ export const Game: React.FC = () => {
       controller.abort();
     };
   }, [gameId]);
+
+  async function handleConnect(adId: AdDTO["id"]) {
+    setIsFetchingDiscord(true);
+
+    try {
+      const { data } = await api.get<{ discord: string }>(
+        `/ads/${adId}/discord`,
+      );
+
+      setSelectedDuoDiscord(data.discord);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Erro", "Não foi possível buscar o discord.");
+    } finally {
+      setIsFetchingDiscord(false);
+    }
+  }
+
+  function handleCloseModal() {
+    setSelectedDuoDiscord("");
+  }
 
   return (
     <Background>
@@ -68,7 +99,13 @@ export const Game: React.FC = () => {
         <FlatList
           data={ads}
           keyExtractor={ad => ad.id}
-          renderItem={({ item }) => <AdCard ad={item} />}
+          renderItem={({ item: ad }) => (
+            <AdCard
+              ad={ad}
+              onConnect={() => handleConnect(ad.id)}
+              isConnecting={isFetchingDiscord}
+            />
+          )}
           horizontal
           style={styles.containerList}
           contentContainerStyle={styles.contentList}
@@ -80,6 +117,12 @@ export const Game: React.FC = () => {
           )}
         />
       </SafeAreaView>
+
+      <LetsPlayModal
+        visible={!!selectedDuoDiscord}
+        discord={selectedDuoDiscord}
+        onClose={handleCloseModal}
+      />
     </Background>
   );
 };

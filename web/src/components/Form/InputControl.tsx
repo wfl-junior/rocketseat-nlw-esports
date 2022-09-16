@@ -11,7 +11,7 @@ export const InputControl: React.FC<InputControlProps> = ({
   ...props
 }) => (
   <div className="flex flex-col gap-2">
-    <label htmlFor={name} className="font-semibold">
+    <label htmlFor={name} className="cursor-pointer font-semibold">
       {label}
     </label>
 
