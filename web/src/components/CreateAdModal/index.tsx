@@ -16,7 +16,7 @@ import { WeekdaysInputControl } from "./WeekdaysInputControl";
 type CreateAdFormData = InferType<typeof createAdValidationSchema>;
 
 export const CreateAdModal: React.FC = () => {
-  const { games } = useGamesContext();
+  const { games, increaseGameAdsCount } = useGamesContext();
   const {
     register,
     control,
@@ -40,6 +40,7 @@ export const CreateAdModal: React.FC = () => {
   const handleCreateAd = handleSubmit(async values => {
     try {
       await api.post(`/games/${values.gameId}/ads`, values);
+      increaseGameAdsCount(values.gameId);
       reset();
       toast.success("Anúncio criado com sucesso!");
     } catch (error) {

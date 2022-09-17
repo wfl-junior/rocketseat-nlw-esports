@@ -1,9 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { GameDTO } from "../DTOs/GameDTO";
 import { api } from "../services/api";
 
 interface GamesContextData {
   games: GameDTO[];
+  increaseGameAdsCount: (gameId: GameDTO["id"]) => void;
 }
 
 const GamesContext = createContext({} as GamesContextData);
@@ -26,7 +33,24 @@ export const GamesContextProvider: React.FC<GamesContextProviderProps> = ({
       .catch(console.log);
   }, []);
 
+  const increaseGameAdsCount: GamesContextData["increaseGameAdsCount"] =
+    useCallback(gameId => {
+      setGames(currentGames => {
+        const updatedGames = currentGames.map(game => {
+          if (game.id === gameId) {
+            game._count.ads += 1;
+          }
+
+          return game;
+        });
+
+        return updatedGames;
+      });
+    }, []);
+
   return (
-    <GamesContext.Provider value={{ games }}>{children}</GamesContext.Provider>
+    <GamesContext.Provider value={{ games, increaseGameAdsCount }}>
+      {children}
+    </GamesContext.Provider>
   );
 };
