@@ -46,3 +46,9 @@ Evento da [Rocketseat](https://www.rocketseat.com.br). Aplicação Full Stack pa
 - [Expo](https://docs.expo.dev/index.html)
 - [React Navigation](https://reactnavigation.org)
 - [Axios](https://axios-http.com)
+
+## Alterações minhas incluem
+
+- Responsividade no aplicativo Web
+- Validação de dados no backend e na Web
+- Slider para os games na Web
