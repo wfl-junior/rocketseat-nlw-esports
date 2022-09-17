@@ -37,6 +37,7 @@ export const createAdValidationSchema = yup.object({
     .of(
       yup
         .number()
+        .required()
         .integer("Each week day must be an integer.")
         .min(0, "Each week day must be an integer from 0 to 6.")
         .max(6, "Each week day must be an integer from 0 to 6.")

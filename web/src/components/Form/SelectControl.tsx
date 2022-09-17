@@ -1,17 +1,28 @@
+import { FieldValues, useController } from "react-hook-form";
 import { Select, SelectProps } from "./Select";
 
-interface SelectControlProps extends SelectProps {}
-
-export const SelectControl: React.FC<SelectControlProps> = ({
+export const SelectControl = <T extends FieldValues = FieldValues>({
   label,
   name,
+  control,
   ...props
-}) => (
-  <div className="flex flex-col gap-2">
-    <label htmlFor={name} className="font-semibold">
-      {label}
-    </label>
+}: SelectProps<T>): JSX.Element => {
+  const {
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+  });
 
-    <Select label={label} name={name} {...props} />
-  </div>
-);
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="font-semibold">
+        {label}
+      </label>
+
+      <Select label={label} name={name} control={control} {...props} />
+
+      {!!error && <p className="text-sm text-red-500">{error.message}</p>}
+    </div>
+  );
+};
