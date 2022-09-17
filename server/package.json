@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "tsnd --exit-child --transpile-only src/server.ts",
+    "seed": "tsnd --transpile-only src/seed.ts",
     "build": "tsc"
   },
   "dependencies": {

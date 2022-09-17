@@ -12,7 +12,8 @@ Evento da [Rocketseat](https://www.rocketseat.com.br). Aplicação Full Stack pa
 
 ## Instruções
 
-1. Renomeio o arquivo `.env.example` para `.env` dentro da pasta `server`
+1. Renomeie o arquivo `.env.example` para `.env` dentro da pasta `server`
+1. Semeie os games no banco de dados rodando `yarn seed` dentro da pasta `server`
 1. Inicie o servidor do backend em um terminal, rodando o comando `npm run dev` ou `yarn dev` dentro da pasta `server`
 1. Inicie o servidor da web em outro terminal, rodando `npm run dev` ou `yarn dev` dentro da pasta `web`
 1. Para utilizar o aplicativo web, basta abrir [http://localhost:5173](http://localhost:5173) em algum browser
