@@ -16,7 +16,13 @@ export const InputControl = forwardRef<HTMLInputElement, InputControlProps>(
         </label>
       )}
 
-      <Input ref={ref} name={name} id={name} {...props} />
+      <Input
+        ref={ref}
+        name={name}
+        id={name}
+        hasError={!!errorMessage}
+        {...props}
+      />
 
       {!!errorMessage && <p className="text-sm text-red-500">{errorMessage}</p>}
     </div>

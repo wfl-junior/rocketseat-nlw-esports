@@ -13,6 +13,7 @@ export interface SelectProps<T extends FieldValues = FieldValues> {
   control: Control<T>;
   placeholder: string;
   options: SelectOption[];
+  hasError?: boolean;
 }
 
 export const Select = <T extends FieldValues = FieldValues>({
@@ -21,6 +22,7 @@ export const Select = <T extends FieldValues = FieldValues>({
   control,
   placeholder,
   options,
+  hasError,
 }: SelectProps<T>): JSX.Element => {
   const {
     field: { value, onChange },
@@ -33,7 +35,9 @@ export const Select = <T extends FieldValues = FieldValues>({
     <SelectPrimitive.Root name={name} value={value} onValueChange={onChange}>
       <SelectPrimitive.Trigger
         aria-label={label}
-        className="[&[data-placeholder]]:text-zinc-500 flex w-full items-center justify-between rounded bg-zinc-900 py-3 px-4 text-sm text-white"
+        className={`[&[data-placeholder]]:text-zinc-500 [&[data-state='open']]:border-violet-500 flex w-full items-center justify-between rounded border bg-zinc-900 py-3 px-4 text-sm text-white ${
+          hasError ? "border-red-500" : "border-zinc-900"
+        }`}
       >
         <SelectPrimitive.Value placeholder={placeholder} />
 

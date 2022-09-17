@@ -20,7 +20,13 @@ export const SelectControl = <T extends FieldValues = FieldValues>({
         {label}
       </label>
 
-      <Select label={label} name={name} control={control} {...props} />
+      <Select
+        label={label}
+        name={name}
+        control={control}
+        hasError={!!error}
+        {...props}
+      />
 
       {!!error && <p className="text-sm text-red-500">{error.message}</p>}
     </div>

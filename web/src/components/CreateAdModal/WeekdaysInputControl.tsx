@@ -51,8 +51,9 @@ export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
             key={day.title}
             value={index.toString()}
             type="button"
-            className="[&[data-state='on']]:bg-violet-500 aspect-square w-10 rounded bg-zinc-900 font-bold transition-colors"
+            className="[&[data-state='on']]:bg-violet-500 aspect-square w-10 rounded bg-zinc-900 font-bold outline-none transition-colors hover:bg-zinc-800 focus:ring-1 focus:ring-violet-500"
             title={day.title}
+            tabIndex={0}
           >
             {day.label}
           </ToggleGroup.Item>
