@@ -11,7 +11,10 @@ export const InputControl = forwardRef<HTMLInputElement, InputControlProps>(
   ({ label, name, errorMessage, ...props }, ref) => (
     <div className="flex flex-col gap-2">
       {!!label && (
-        <label htmlFor={name} className="cursor-pointer font-semibold">
+        <label
+          htmlFor={name}
+          className="cursor-pointer text-sm font-semibold sm:text-base"
+        >
           {label}
         </label>
       )}

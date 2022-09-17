@@ -12,16 +12,48 @@ export const App: React.FC = () => {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     dragSpeed: 3,
     slides: {
-      perView: 6,
-      spacing: 24,
+      perView: 2,
+      spacing: 12,
+    },
+    breakpoints: {
+      "(min-width: 425px)": {
+        slides: {
+          perView: 2,
+          spacing: 18,
+        },
+      },
+      "(min-width: 640px)": {
+        slides: {
+          perView: 3,
+          spacing: 16,
+        },
+      },
+      "(min-width: 768px)": {
+        slides: {
+          perView: 4,
+          spacing: 18,
+        },
+      },
+      "(min-width: 1024px)": {
+        slides: {
+          perView: 5,
+          spacing: 20,
+        },
+      },
+      "(min-width: 1280px)": {
+        slides: {
+          perView: 6,
+          spacing: 24,
+        },
+      },
     },
   });
 
   return (
-    <div className="mx-auto my-20 flex max-w-[1344px] flex-col items-center">
+    <div className="mx-auto my-10 flex max-w-[1344px] flex-col items-center px-4 sm:my-14 md:my-16 xl:my-20">
       <img src={logo} alt="" />
 
-      <h1 className="mt-20 text-6xl font-black text-white">
+      <h1 className="mt-10 text-3xl font-black text-white sm:mt-14 md:mt-16 md:text-4xl lg:text-5xl xl:mt-20 xl:text-6xl">
         Seu{" "}
         <span className="bg-nlw-gradient bg-clip-text text-transparent">
           duo
@@ -34,15 +66,19 @@ export const App: React.FC = () => {
           <div className="mt-16 flex w-full items-center justify-between gap-6">
             <button
               type="button"
-              className="text-zinc-400 hover:text-zinc-500"
+              className="aspect-square w-6 text-zinc-400 hover:text-zinc-500 sm:w-8 md:w-10 lg:w-12"
               onClick={() => {
                 instanceRef.current?.prev();
               }}
             >
-              <CaretLeft size={48} className="transition-colors" />
+              <CaretLeft
+                width="100%"
+                height="100%"
+                className="transition-colors"
+              />
             </button>
 
-            <div className="w-full max-w-[1200px]">
+            <div className="w-full max-w-[1200px] overflow-hidden">
               <div ref={sliderRef} className="keen-slider">
                 {games.map(game => (
                   <GameBanner
@@ -57,12 +93,16 @@ export const App: React.FC = () => {
 
             <button
               type="button"
-              className="text-zinc-400 hover:text-zinc-500"
+              className="aspect-square w-6 text-zinc-400 hover:text-zinc-500 sm:w-8 md:w-10 lg:w-12"
               onClick={() => {
                 instanceRef.current?.next();
               }}
             >
-              <CaretRight size={48} className="transition-colors" />
+              <CaretRight
+                width="100%"
+                height="100%"
+                className="transition-colors"
+              />
             </button>
           </div>
 

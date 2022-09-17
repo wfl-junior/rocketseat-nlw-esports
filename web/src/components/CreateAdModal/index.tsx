@@ -53,8 +53,8 @@ export const CreateAdModal: React.FC = () => {
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 bg-black/60" />
 
-      <Dialog.Content className="bg-shape fixed top-1/2 left-1/2 w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-lg py-8 px-10 text-white shadow-lg shadow-black/25">
-        <Dialog.Title className="text-3xl font-black">
+      <Dialog.Content className="bg-shape fixed top-1/2 left-1/2 max-h-screen w-full max-w-[480px] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-sm py-8 px-10 text-white shadow-lg shadow-black/25 sm:rounded-lg">
+        <Dialog.Title className="text-xl font-black sm:text-2xl md:text-3xl">
           Publique um anúncio
         </Dialog.Title>
 
@@ -78,7 +78,7 @@ export const CreateAdModal: React.FC = () => {
             {...register("name")}
           />
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
             <InputControl
               label="Joga há quantos anos?"
               type="text"
@@ -97,17 +97,13 @@ export const CreateAdModal: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <WeekdaysInputControl
-              name="weekDays"
-              control={control}
-              errorMessage={errors.weekDays?.message}
-            />
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <WeekdaysInputControl name="weekDays" control={control} />
 
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="startHour"
-                className="cursor-pointer font-semibold"
+                className="cursor-pointer text-sm font-semibold sm:text-base"
               >
                 Qual horário do dia?
               </label>
@@ -136,7 +132,7 @@ export const CreateAdModal: React.FC = () => {
               control={control}
               render={({ field: { value, onChange } }) => (
                 <Checkbox.Root
-                  className="aspect-square w-6 rounded bg-zinc-900 p-1"
+                  className="aspect-square w-5 rounded bg-zinc-900 p-1 md:w-6"
                   id="usesVoiceChannel"
                   checked={value}
                   onCheckedChange={onChange}
@@ -150,7 +146,7 @@ export const CreateAdModal: React.FC = () => {
 
             <label
               htmlFor="usesVoiceChannel"
-              className="cursor-pointer text-sm"
+              className="cursor-pointer text-xs sm:text-sm"
             >
               Costumo me conectar ao chat de voz
             </label>
@@ -159,14 +155,14 @@ export const CreateAdModal: React.FC = () => {
           <footer className="mt-4 flex justify-end gap-4">
             <Dialog.Close
               type="button"
-              className="h-12 rounded-md bg-zinc-500 px-5 font-semibold transition-colors hover:bg-zinc-600"
+              className="rounded-md bg-zinc-500 py-2.5 px-3.5 text-sm font-semibold transition-colors hover:bg-zinc-600 sm:px-5 sm:py-3 sm:text-base"
             >
               Cancelar
             </Dialog.Close>
 
             <button
               type="submit"
-              className="flex h-12 items-center gap-3 rounded-md bg-violet-500 px-5 font-semibold transition-colors hover:bg-violet-600"
+              className="flex items-center gap-3 rounded-md bg-violet-500 py-2.5 px-3.5 text-sm font-semibold transition-colors hover:bg-violet-600 sm:py-3 sm:px-5 sm:text-base"
             >
               <GameController size={24} />
               Encontrar duo

@@ -16,7 +16,7 @@ export const SelectControl = <T extends FieldValues = FieldValues>({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="font-semibold">
+      <label htmlFor={name} className="text-sm font-semibold sm:text-base">
         {label}
       </label>
 

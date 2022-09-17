@@ -16,8 +16,11 @@ export const GameBanner: React.FC<GameBannerProps> = ({
     <img src={bannerUrl} alt="" />
 
     <div className="bg-game-gradient absolute inset-x-0 bottom-0 w-full px-4 pt-16 pb-4">
-      <strong className="block font-bold text-white">{title}</strong>
-      <span className="mt-1 text-sm text-zinc-300">
+      <strong className="block text-sm font-bold text-white sm:text-base">
+        {title}
+      </strong>
+
+      <span className="mt-1 text-xs text-zinc-300 sm:text-sm">
         {adsCount} anúncio{adsCount !== 1 && "s"}
       </span>
     </div>

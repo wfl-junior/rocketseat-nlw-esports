@@ -19,7 +19,6 @@ const days: Day[] = [
 interface WeekdaysInputControlProps<T extends FieldValues = FieldValues> {
   name: Path<T>;
   control: Control<T>;
-  errorMessage?: string;
 }
 
 export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
@@ -36,13 +35,13 @@ export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="weekDays" className="font-semibold">
+      <label htmlFor="weekDays" className="text-sm font-semibold sm:text-base">
         Quando costuma jogar?
       </label>
 
       <ToggleGroup.Root
         type="multiple"
-        className="grid grid-cols-4 gap-2"
+        className="flex flex-wrap gap-2 sm:grid sm:grid-cols-4"
         value={value.map(String)}
         onValueChange={newValue => onChange(newValue.map(Number))}
       >
@@ -51,7 +50,7 @@ export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
             key={day.title}
             value={index.toString()}
             type="button"
-            className="[&[data-state='on']]:bg-violet-500 aspect-square w-10 rounded bg-zinc-900 font-bold outline-none transition-colors hover:bg-zinc-800 focus:ring-1 focus:ring-violet-500"
+            className="[&[data-state='on']]:bg-violet-500 aspect-square w-9 rounded bg-zinc-900 text-sm font-bold outline-none transition-colors hover:bg-zinc-800 focus:ring-1 focus:ring-violet-500 sm:w-10 sm:text-base"
             title={day.title}
             tabIndex={0}
           >
