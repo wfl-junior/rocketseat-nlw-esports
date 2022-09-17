@@ -62,7 +62,7 @@ export const CreateAdModal: React.FC = () => {
           <SelectControl
             label="Qual o game?"
             placeholder="Selecione o game que deseja jogar"
-            options={games.map(game => ({
+            options={games!.map(game => ({
               label: game.title,
               value: game.id,
             }))}

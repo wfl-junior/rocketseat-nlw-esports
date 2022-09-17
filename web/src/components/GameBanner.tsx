@@ -11,7 +11,7 @@ export const GameBanner: React.FC<GameBannerProps> = ({
 }) => (
   <a
     href="#"
-    className="relative overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105"
+    className="keen-slider__slide relative overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105"
   >
     <img src={bannerUrl} alt="" />
 

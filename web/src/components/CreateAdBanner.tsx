@@ -4,7 +4,7 @@ import { CreateAdModal } from "./CreateAdModal";
 
 export const CreateAdBanner: React.FC = () => (
   <Dialog.Root>
-    <div className="before:bg-nlw-gradient bg-shape relative mt-8 flex w-full items-center justify-between overflow-hidden rounded-lg px-8 py-6 before:absolute before:inset-x-0 before:top-0 before:h-1">
+    <div className="before:bg-nlw-gradient bg-shape relative mx-auto mt-8 flex w-full max-w-[1200px] items-center justify-between overflow-hidden rounded-lg px-8 py-6 before:absolute before:inset-x-0 before:top-0 before:h-1">
       <div>
         <strong className="block text-2xl font-black text-white">
           Não encontrou seu duo?
