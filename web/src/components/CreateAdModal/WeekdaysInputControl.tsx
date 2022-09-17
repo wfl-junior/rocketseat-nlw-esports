@@ -27,7 +27,7 @@ export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
   control,
 }: WeekdaysInputControlProps<T>): JSX.Element => {
   const {
-    field: { value: weekDays, onChange },
+    field: { value, onChange },
     fieldState: { error },
   } = useController({
     name,
@@ -43,17 +43,15 @@ export const WeekdaysInputControl = <T extends FieldValues = FieldValues>({
       <ToggleGroup.Root
         type="multiple"
         className="grid grid-cols-4 gap-2"
-        value={weekDays.map(String)}
-        onValueChange={value => onChange(value.map(Number))}
+        value={value.map(String)}
+        onValueChange={newValue => onChange(newValue.map(Number))}
       >
         {days.map((day, index) => (
           <ToggleGroup.Item
             key={day.title}
             value={index.toString()}
             type="button"
-            className={`aspect-square w-10 rounded font-bold transition-colors ${
-              weekDays.includes(index) ? "bg-violet-500" : "bg-zinc-900"
-            }`}
+            className="[&[data-state='on']]:bg-violet-500 aspect-square w-10 rounded bg-zinc-900 font-bold transition-colors"
             title={day.title}
           >
             {day.label}
