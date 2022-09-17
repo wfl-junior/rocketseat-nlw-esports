@@ -30,6 +30,7 @@ Evento da [Rocketseat](https://www.rocketseat.com.br). Aplicação Full Stack pa
 - [Express](https://expressjs.com)
 - [Prisma](https://www.prisma.io)
 - [SQLite](https://www.sqlite.org/index.html)
+- [yup](https://github.com/jquense/yup)
 
 ### Web
 
@@ -37,7 +38,9 @@ Evento da [Rocketseat](https://www.rocketseat.com.br). Aplicação Full Stack pa
 - [Vite](https://vitejs.dev)
 - [Tailwind](https://tailwindcss.com)
 - [Radix UI](https://www.radix-ui.com)
+- [React Hook Form](https://react-hook-form.com)
 - [Axios](https://axios-http.com)
+- [yup](https://github.com/jquense/yup)
 
 ### App
 
